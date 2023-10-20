@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events in JS</title>
+</head>
+
+<body>
+    <ul id="images">
+        <li><img width="200px" height="200px" id="img1"
+                src="https://images.unsplash.com/photo-1508138221679-760a23a2285b?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cmFuZG9tfGVufDB8fDB8fHww"
+                alt="photo"></li>
+        <li><img width="200px" height="200px" id="img2"
+                src="https://images.unsplash.com/photo-1509281373149-e957c6296406?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cmFuZG9tfGVufDB8fDB8fHww"
+                alt="photo"></li>
+        <li><img width="200px" height="200px" id="img3"
+                src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHJhbmRvbXxlbnwwfHwwfHx8MA%3D%3D"
+                alt="photo"></li>
+        <li><img width="200px" height="200px" id="img4"
+                src="https://images.unsplash.com/photo-1496449903678-68ddcb189a24?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHJhbmRvbXxlbnwwfHwwfHx8MA%3D%3D"
+                alt="photo"></li>
+        <li><img width="200px" height="200px" id="img5"
+                src="https://images.unsplash.com/photo-1507608616759-54f48f0af0ee?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHJhbmRvbXxlbnwwfHwwfHx8MA%3D%3D"
+                alt="photo"></li>
+        <li><a href="https://www.google.com" id="google" target="_blank">Google</a></li>
+    </ul>
+</body>
+<script>
+    // --- old approach
+    // document.getElementById('btn').onClick = function () {
+    //     alert("hello");
+    // }
+
+    // --- old methods
+    // attachEvents()
+    // jQuery onEventListnener
+
+    // --- main events
+    // type, timestamp, defaultprevent, target, toElement, srcElement, currentTarget e.t.c
+    // clientX, clientY and other position related events
+    // altKey, ctrlKey, shitKey, keyCode 
+
+    // --- Events propagation
+    // false (common, by default) -> event bubbling (bottom to up)
+    // true -> event capturing (top to bottom)
+
+    // --- Basic concepts ---
+    // document.getElementById('images').addEventListener('click', (e) => {
+    //     // console.log(e);
+    //     console.log("image clicked");
+    // }, false) // third parameter is false which is by default
+
+    // document.getElementById('img3').addEventListener('click', (e) => {
+    //     console.log("flower image clicked");
+    //     // e.stopPropagation();
+    // }, false)
+
+    // document.getElementById('google').addEventListener('click',(e)=>{
+    //     console.log('google clicked');
+    //     e.stopPropagation(); // to stop propagation and do not want bubbling up
+    //     e.preventDefault();
+    // })
+
+
+    const img = document.querySelector('#images');
+    img.addEventListener('click', (e) => {
+        // console.log(e.target); // with this image will removed but not the li
+        // console.log(e.target.parentNode); // removing whole at once if not click image
+
+        console.log(e.target.tagName);
+        // now it will only remove the img if u clicked it right
+        if (e.target.tagName === 'IMG') {
+            console.log(e.target.id);
+            let removeElem = e.target.parentNode;
+            removeElem.remove(); // one way
+        }
+
+        // removeElem.parentNode.removeChild(removeElem); // another way
+        // above first we go to parentNode(ul) then the child(li) and remove it.
+    })
+
+</script>
+
+</html>
