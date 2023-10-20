@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>BMI calculator</title>
+</head>
+
+<body>
+    <div class="container">
+        <form>
+            <h1>BMI Calculator</h1>
+            <p><label>Height in cm: </label><input type="text" id="height"></p>
+            <p><label>Weight in Kg: </label><input type="text" id="weight"></p>
+            <button>Calculate</button>
+            <div id="result"></div>
+            <div id="msg"></div>
+
+            <div class="guide">
+                <h2>BMI Weight Guide</h2>
+                <p>Under weight = less than 18.6</p>
+                <p>Normal range = 18.6 and 24.9</p>
+                <p>Overweight = Greater than 24.9</p>
+            </div>
+        </form>
+    </div>
+</body>
+
+<script src="script.js"></script>
+
+</html>
